@@ -53,7 +53,7 @@
             label4 = new Label();
             textBox2 = new TextBox();
             label3 = new Label();
-            button8 = new Button();
+            btnReserva = new Button();
             ((System.ComponentModel.ISupportInitialize)pboxAvion).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -277,21 +277,22 @@
             label3.TabIndex = 4;
             label3.Text = "Nombre";
             // 
-            // button8
+            // btnReserva
             // 
-            button8.Location = new Point(26, 513);
-            button8.Name = "button8";
-            button8.Size = new Size(250, 37);
-            button8.TabIndex = 11;
-            button8.Text = "Reservar";
-            button8.UseVisualStyleBackColor = true;
+            btnReserva.Location = new Point(26, 513);
+            btnReserva.Name = "btnReserva";
+            btnReserva.Size = new Size(250, 37);
+            btnReserva.TabIndex = 11;
+            btnReserva.Text = "Reservar";
+            btnReserva.UseVisualStyleBackColor = true;
+            btnReserva.Click += btnReserva_Click;
             // 
             // Ventanilla
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(734, 711);
-            Controls.Add(button8);
+            Controls.Add(btnReserva);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -342,6 +343,6 @@
         private Label label4;
         private TextBox textBox2;
         private Label label3;
-        private Button button8;
+        private Button btnReserva;
     }
 }
