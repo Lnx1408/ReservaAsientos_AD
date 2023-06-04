@@ -37,6 +37,63 @@ namespace ReservaAsientoAvion
             //hilo2.Join();
             //hilo3.Join();
 
+            //Ejemplo Barrera de uso
+            InicializarTodosDisponibles();
+
+            //Codigo de ejemplo para asientos no disponibles visualmente
+            int asientosND = 2;
+            ColorNoDisponible(asientosND);
+
+            //Codigo de ejemplo para asientos disponibles visualmente
+            int asientosD = 1;
+            ColorDisponible(asientosD);
+        }
+
+        public void ColorDisponible(int identificadorAsiento)
+        {
+            Dictionary<int, Button> botones = CargaDeAsientos();
+
+            botones[identificadorAsiento].BackColor = Color.Green;
+        }
+
+        public void ColorNoDisponible(int identificadorAsiento)
+        {
+            Dictionary<int, Button> asientos = CargaDeAsientos();
+
+            asientos[identificadorAsiento].BackColor = Color.Yellow;
+        }
+
+        private Dictionary<int, Button> CargaDeAsientos()
+        {
+            Dictionary<int, Button> asientos = new Dictionary<int, Button>();
+
+            Regex patron = new Regex("^A(\\d+)$"); // Patrón para nombres como "A1", "A2", etc.
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button boton)
+                {
+                    Match match = patron.Match(boton.Name);
+                    if (match.Success)
+                    {
+                        int numero = int.Parse(match.Groups[1].Value);
+                        asientos[numero] = boton;
+                    }
+                }
+            }
+
+            return asientos;
+        }
+
+        public void InicializarTodosDisponibles()
+        {
+            Dictionary<int, Button> asientos = CargaDeAsientos();
+
+            foreach (Button asiento in asientos.Values)
+            {
+                asiento.BackColor = Color.Green;
+            }
+
         }
     }
 }
